@@ -115,3 +115,21 @@ Choose the one that your server are using, then give it Custom TCP with port 300
 For running locally, AWS S3 are still needs to be setup as mentioned above. But the IP in frontend files could be just `localhost`.
 
 If on Windows, could use Docker Desktop for launching containers.
+
+## Files Description
+
+- Directories
+
+`consumer`: Consumer code (Backend 2), including GraphQL API implementaion, Kafka Consumer, MongoDB Client.
+`demo`: Images for demonstration.
+`frontend`: Web-based Frontend code.
+`producer`: Producer code (Backend 1), including RESFful API implementation, AWS S3 client, Kafka Producer, GraphQL client.
+`requests`: VScode RESTful API debugging tool.
+
+- Files
+
+dirname.js: Helper file for get current path location.
+docker-compose.yml: Docker-Compose file for launching containers, including zookeeper, Kafka, Backend 1, Backend 2, and MongoDB.
+graphql.txt: A record of a few GraphQL requests used for debugging when developing.
+messageType.js: The message format definition for streaming through Kafka Pipeline.
+package.json: Packages Dependencies.
