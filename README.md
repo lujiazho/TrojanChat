@@ -120,16 +120,16 @@ If on Windows, could use Docker Desktop for launching containers.
 
 - Directories
 
-`consumer`: Consumer code (Backend 2), including GraphQL API implementaion, Kafka Consumer, MongoDB Client.
-`demo`: Images for demonstration.
-`frontend`: Web-based Frontend code.
-`producer`: Producer code (Backend 1), including RESFful API implementation, AWS S3 client, Kafka Producer, GraphQL client.
+`consumer`: Consumer code (Backend 2), including GraphQL API implementaion, Kafka Consumer, MongoDB Client.<br>
+`demo`: Images for demonstration.<br>
+`frontend`: Web-based Frontend code.<br>
+`producer`: Producer code (Backend 1), including RESFful API implementation, AWS S3 client, Kafka Producer, GraphQL client.<br>
 `requests`: VScode RESTful API debugging tool.
 
 - Files
 
-dirname.js: Helper file for get current path location.
-docker-compose.yml: Docker-Compose file for launching containers, including zookeeper, Kafka, Backend 1, Backend 2, and MongoDB.
-graphql.txt: A record of a few GraphQL requests used for debugging when developing.
-messageType.js: The message format definition for streaming through Kafka Pipeline.
-package.json: Packages Dependencies.
+`dirname.js`: Helper file for get current path location.<br>
+`docker-compose.yml`: Docker-Compose file for launching containers, including zookeeper, Kafka, Backend 1, Backend 2, and MongoDB.<br>
+`graphql.txt`: A record of a few GraphQL requests used for debugging when developing.<br>
+`messageType.js`: The message format definition for streaming through Kafka Pipeline.<br>
+`package.json`: Packages Dependencies.
