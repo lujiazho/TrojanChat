@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="./css/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin">
+  <form id="enter" ENCTYPE="application/json">
+    <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating">
+      <input type="input" class="form-control" id="input" placeholder="UserID (signin) / Username (signup)">
+      <label for="input">UserID (signin) / Username (signup)</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
+
+    <div class="w-100 btn-group">
+      <button class="w-50 btn btn-lg btn-primary" type="submit" id="signin">Sign in</button>
+      <button class="w-50 btn btn-lg btn-primary" type="submit" id="signup">Sign up</button>
+    </div>
+  </form>
+</main>
+
+<style type="text/css">
+  html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+</style>
+
+<script type="text/javascript">
+    const serverIP = '54.187.66.112';
+    function signupFunc(e, path, params, content, method='post') {
+        e.preventDefault();
+        const form = document.getElementById('enter');
+
+        const username = document.getElementById('input');
+        const password = document.getElementById('password');
+
+        $.ajax({
+            url: `http://${serverIP}:3000/user`,
+            type: 'post',
+            data: `username=${username.value}&password=${password.value}`,
+            success: function(data){
+                alert(`please remember your uid: ${JSON.parse(data).userCreate.uid}, because you won't be able to see it again`)
+                // Whatever you want to do after the form is successfully submitted
+            },
+            error: function(xhr, status, error) {
+                console.log(error)
+                alert(xhr.responseText);
+            }
+        });
+    }
+
+    function signinFunc(e, path, params, content, method='post') {
+        e.preventDefault();
+        const form = document.getElementById('send-text');
+  
+        const uid = document.getElementById('input');
+        const password = document.getElementById('password');
+        
+        $.ajax({
+            url: `http://${serverIP}:3000/user/${uid.value}`,
+            type: 'post',
+            data: `password=${password.value}`,
+            success: function(data){
+              if (JSON.parse(data).login === null) {
+                alert("wrong user information")
+              } else {
+                console.log(JSON.parse(data))
+                if (JSON.parse(data).loginwithname == null) {
+                  location.href = `./chat_app.html?uid=${JSON.parse(data).login.uid}`
+                } else {
+                  location.href = `./chat_app.html?uid=${JSON.parse(data).loginwithname.uid}`
+                }
+              }
+            }
+        });
+    }
+
+    var signup = document.getElementById("signup");
+    signup.addEventListener("click", signupFunc);
+
+    var signin = document.getElementById("signin");
+    signin.addEventListener("click", signinFunc);
+</script>
+  </body>
+</html>

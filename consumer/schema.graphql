@@ -1,0 +1,111 @@
+union MessageBlock = Umessage | Gmessage
+
+enum TypeEnum {
+  text
+  image
+  video
+}
+
+type Query {
+  message(
+    uid:                      ID!
+  ): [MessageBlock]!
+
+  user(
+    uid:                      ID!
+  ): User
+
+  login(
+    uid:                      ID!
+    password:                 String!
+  ): User
+
+  loginwithname(
+    name:                     String!
+    password:                 String!
+  ): User
+
+  friend(
+    uid:                      ID!
+  ): [User]!
+}
+
+type Mutation {
+  userCreate(
+    userInput:                userCreateInput
+  ): User
+
+  groupCreate(
+    groupInput:               groupCreateInput
+  ): Group
+
+  joinGroup(
+    uid:                      String!
+    gid:                      String!
+  ): Relation
+
+  addFriend(
+    uid1:                      String!
+    uid2:                      String!
+  ): Friend
+
+  deleteFriend(
+    uid1:                      String!
+    uid2:                      String!
+  ): Boolean!
+}
+
+input userCreateInput {
+  username:                   String!
+  password:                   String!
+}
+
+input groupCreateInput {
+  groupname:                  String!
+  created_by:                 ID!
+}
+
+type User {
+  uid:                        ID!
+  username:                   String!
+  password:                   String!
+  created_at:                 String
+  updated_at:                 String
+}
+
+type Group {
+  gid:                        ID!
+  groupname:		              String!
+  created_at:		              String
+  created_by:		              String
+}
+
+type Umessage {
+  umid:		                    ID!
+  from:		                    String
+  to:		                      String
+  content:	                  String
+  type:		                    TypeEnum
+  sent_at:		                String
+}
+
+type Gmessage {
+  gmid:		                    ID!
+  group:	                    String
+  from:		                    String
+  content:		                String
+  type:		                    TypeEnum
+  sent_at:		                String
+}
+
+type Relation {
+  rid:		                    ID!
+  uid:                        String!
+  gid:                        String!
+}
+
+type Friend {
+  fid:		                    ID!
+  uid1:                       String!
+  uid2:                       String!
+}

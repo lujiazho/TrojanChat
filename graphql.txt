@@ -1,0 +1,31 @@
+mutation{
+  userCreate(userInput: {username: "me", password: "fuck"}){
+    uid
+  }
+  groupCreate(groupInput: {groupname: "group1", created_by: "636dc5dba3725a536005227e"}){
+    created_at
+    gid
+  }
+}
+
+mutation{
+  joinGroup(uid: "6372ceb69f82318474ae1ada", gid: "6372ceb69f82318474ae1adb"){
+    rid
+  }
+}
+
+{
+  message(uid: "6372ceb69f82318474ae1ada"){
+    ... on Umessage {
+      content
+      type
+      from
+    }
+    ... on Gmessage {
+      content
+      type
+      group
+      from
+    }
+  }
+}

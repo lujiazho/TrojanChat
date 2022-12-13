@@ -1,0 +1,69 @@
+@api = http://localhost:3000
+# @api = http://35.90.137.151:3000
+
+### sign up
+POST {{api}}/user
+content-type: application/x-www-form-urlencoded
+
+username=asds
+&password=123
+
+### login
+POST {{api}}/user/6396c9c5e852670ed8cb9ba8
+content-type: application/x-www-form-urlencoded
+
+password=123
+
+### loginwithname
+POST {{api}}/user/lujiaa
+content-type: application/x-www-form-urlencoded
+
+password=123
+
+### create group
+POST {{api}}/group
+content-type: application/x-www-form-urlencoded
+
+groupname=greatGROUP
+&created_by=6395056d34ea30ecfe5f7f5e
+
+### join group
+POST {{api}}/group/6395066934ea30ecfe5f7f63
+content-type: application/x-www-form-urlencoded
+
+from=6395056d34ea30ecfe5f7f5e
+
+### send message to user
+POST {{api}}/user/6396d265985db0c6e1f8f886/text
+content-type: application/x-www-form-urlencoded
+
+from=6396c9c5e852670ed8cb9ba8
+&message=hi there again yes
+
+
+### send message to group
+POST {{api}}/group/637d650816f29f2bf01cea65/text
+content-type: application/x-www-form-urlencoded
+
+from=637d652016f29f2bf01cea67
+&message=hi, are you there
+
+### get message of user
+GET {{api}}/user/6396d265985db0c6e1f8f886
+
+### add friend
+POST {{api}}/friend/6396b1287d6bf9fec8123902
+content-type: application/x-www-form-urlencoded
+
+from=63967730f671db2118ae8f03
+
+### delete friend
+DELETE {{api}}/friend/63967a1baa72f6b8be99a5b1
+content-type: application/x-www-form-urlencoded
+
+from=63967730f671db2118ae8f03
+
+
+### get all friends
+GET {{api}}/friend/63967730f671db2118ae8f03
+content-type: application/x-www-form-urlencoded
