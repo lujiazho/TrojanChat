@@ -1,6 +1,8 @@
 # TrojanChat
 This repo contains Web-based simple frontend and backend for TrojanChat Application, which is the final project of EE547 at USC.
 
+<img src="demo/demo.gif">
+
 ## Overall Architecture
 
 - Frontends: One Windows Application built with WPF using .NET6 (Not in this repo), one Web Application built with HTML, CSS, Boostrap, and AJAX.
